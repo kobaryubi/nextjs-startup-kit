@@ -25,7 +25,7 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [],
 
-	"forwardPorts": [3000],
+	"forwardPorts": [4000],
 
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
