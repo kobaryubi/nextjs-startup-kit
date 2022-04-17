@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import yup from "schemas/instance";
 import { passwordSchema, nameSchema, ageSchema, passwordConfirmSchema } from "schemas";
 
 const schema = yup.object({
