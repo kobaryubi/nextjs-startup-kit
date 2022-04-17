@@ -1,8 +1,8 @@
 import { NextPage } from 'next'
+import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import { passwordSchema, nameSchema, ageSchema, passwordConfirmSchema } from "schema";
+import { passwordSchema, nameSchema, ageSchema, passwordConfirmSchema } from "schemas";
 
 const schema = yup.object({
   name: nameSchema,
@@ -37,6 +37,7 @@ const YupSample: NextPage = () => {
       />
       <p>{errors.passwordConfirm?.message}</p>
       <input type="submit" />
+      <Link href="/">HOME</Link>
     </form>
   );
 };
