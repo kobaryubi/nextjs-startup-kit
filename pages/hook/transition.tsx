@@ -24,13 +24,22 @@ const HookTransition: NextPage = () => {
 
   return (
     <>
-      {isShowingAdditionalContents ? (
-        <Suspense fallback={<p>loading...</p>}>
+      <Suspense fallback={<p>loading...</p>}>
+        {isShowingAdditionalContents ? (
           <AdditionalContents />
-        </Suspense>
-      ) : (
-        <button onClick={() => setIsShowingAdditionalContents(true)}>追加コンテンツを表示</button>
-      )}
+        ) : (
+          <button
+            disabled={isPending}
+            onClick={() => {
+              startTransition(() => {
+                setIsShowingAdditionalContents(true);
+              });
+            }}
+          >
+            追加コンテンツを表示
+          </button>
+        )}
+      </Suspense>
     </>
   )
 }
