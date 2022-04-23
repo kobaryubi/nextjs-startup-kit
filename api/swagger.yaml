@@ -20,7 +20,21 @@ paths:
                 type: array
                 items:
                   type: string
-  /user/{userId}:
+    post:
+      summary: Creates a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /users/{userId}:
     get:
       summary: Returns a user by ID.
       parameters:
