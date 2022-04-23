@@ -21,16 +21,13 @@ paths:
                 items:
                   type: string
     post:
-      summary: Creates a user.
+      summary: Creates a new user.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                username:
-                  type: string
+              $ref: '#/components/schemas/User'
       responses:
         '201':
           description: Created
