@@ -41,11 +41,29 @@ paths:
         - name: userId
           in: path
           required: true
-          description: User ID
+          description: The ID of the user to return.
           schema:
             type: integer
             format: int64
             minimum: 1
       responses:
         '200':
-          description: OK
+          description: A user object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 4
+                  name:
+                    type: string
+                    example: Jessica Smith
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '404':
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error
