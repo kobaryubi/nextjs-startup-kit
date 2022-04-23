@@ -20,3 +20,18 @@ paths:
                 type: array
                 items:
                   type: string
+  /user/{userId}:
+    get:
+      summary: Returns a user by ID.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK
