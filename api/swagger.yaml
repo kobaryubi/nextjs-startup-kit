@@ -67,3 +67,17 @@ paths:
           description: A user with the specified ID was not found.
         default:
           description: Unexpected error
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 4
+        name:
+          type: string
+          example: Arthur Dent
+      required:
+        - id
+        - name
