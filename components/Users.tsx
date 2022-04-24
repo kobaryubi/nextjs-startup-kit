@@ -1,4 +1,4 @@
-import useSWR, { SWRConfig } from 'swr'
+import useSWR from 'swr'
 import { fetcher } from 'utils/api';
 import { API_ENDPOINT } from "constants/index";
 
