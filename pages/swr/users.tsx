@@ -1,21 +1,29 @@
-import useSWR from 'swr'
-import { API_ENDPOINT } from "constants/index";
-import { fetcher } from 'utils/api';
+import { GetServerSideProps } from 'next';
+import { SWRConfig } from 'swr'
+import { API_ENDPOINT, API_SERVER_BASE_URL } from "constants/index";
+import Users from 'components/Users';
+import urlJoin from 'url-join';
 
-const SwrUsers = () => {
-  const { data } = useSWR(API_ENDPOINT.USERS, fetcher)
-
-  if (!data) {
-    return <p>Loading...</p>
-  }
+const SwrUsers = ({ fallback }: any) => {
 
   return (
-    <ul>
-      {data.map(({ id, username }: any) => (
-        <li key={id}>{username}</li>
-      ))}
-    </ul>
+    <SWRConfig value={{ fallback }}>
+      <Users />
+    </SWRConfig>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await fetch(urlJoin(API_SERVER_BASE_URL, API_ENDPOINT.USERS))
+  const users = await response.json()
+  
+  return {
+    props: {
+      fallback: {
+        [API_ENDPOINT.USERS]: users
+      }
+    }
+  }
 }
 
 export default SwrUsers;

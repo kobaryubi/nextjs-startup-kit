@@ -11,3 +11,5 @@ export const HTTP_METHOD = {
   GET: "GET",
   POST: "POST"
 } as const;
+
+export const API_SERVER_BASE_URL = "http://localhost:4000"
