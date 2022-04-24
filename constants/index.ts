@@ -4,4 +4,8 @@ export const API_ENDPOINT = {
 
 export const FETCH_STATUS = {
   LOADING: "loading"
-}
+} as const;
+
+export const HTTP_METHOD = {
+  POST: "POST"
+} as const;
