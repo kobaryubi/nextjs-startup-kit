@@ -7,5 +7,6 @@ export const FETCH_STATUS = {
 } as const;
 
 export const HTTP_METHOD = {
+  GET: "GET",
   POST: "POST"
 } as const;
