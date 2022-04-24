@@ -1,3 +1,4 @@
+name: Sample workflow dispatch
 on:
   workflow_dispatch:
     branches:
