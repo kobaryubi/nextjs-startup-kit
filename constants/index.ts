@@ -1,5 +1,6 @@
 export const API_ENDPOINT = {
-  TODOS: "/api/todos"
+  TODOS: "/api/todos",
+  USERS: "/api/users"
 } as const;
 
 export const FETCH_STATUS = {
