@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest --watchAll"
+    "test": "jest --maxWorkers=1"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
