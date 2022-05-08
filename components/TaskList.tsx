@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Task, { Props as TaskProps } from 'components/Task';
+import Task, { Props as TaskProps } from './Task';
 
 export type Props = {
   loading: boolean,
