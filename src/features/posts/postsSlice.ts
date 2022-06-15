@@ -6,11 +6,7 @@ interface Post {
   content: string;
 }
 
-interface PostsState {
-  [index: number]: Post;
-}
-
-const initialState: PostsState = [
+const initialState: Post[] = [
   { id: '1', title: 'First Post!', content: 'Hello!' },
   { id: '2', title: 'Second Post', content: 'More text' }
 ]
