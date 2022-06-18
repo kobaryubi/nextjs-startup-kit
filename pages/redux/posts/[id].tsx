@@ -1,6 +1,7 @@
 import { RootState } from '@/app/store'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import Link from 'next/link'
 
 const Post = () => {
   const router = useRouter()
@@ -28,6 +29,14 @@ const Post = () => {
       <p>{id}</p>
       <p>{title}</p>
       <p>{content}</p>
+      <Link
+        href={{
+          pathname: '/redux/posts/edit/[id]',
+          query: { id }
+        }}
+      >
+        edit
+      </Link>
     </div>
   )
 }
