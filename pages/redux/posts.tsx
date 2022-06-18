@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/app/store';
 import { postAdded } from '@/features/posts/postsSlice';
 import { nanoid } from '@reduxjs/toolkit';
+import Link from 'next/link'
 
 const Posts = () => {
   const [title, setTitle] = useState('')
@@ -14,6 +15,14 @@ const Posts = () => {
       <li key={id}>
         <p>{title}</p>
         <p>{content}</p>
+        <Link
+          href={{
+            pathname: '/redux/posts/[id]',
+            query: { id }
+          }}
+        >
+          view
+        </Link>
       </li>
     ))
   }, [posts])
