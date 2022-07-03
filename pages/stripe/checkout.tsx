@@ -40,16 +40,15 @@ const SuccessDisplay = ({ sessionId }: {sessionId: string}) => {
   const { handleSubmit } = useForm()
 
   const onSubmit = async () => {
-    const url = "/api/stripe/create-portal-session"
-    const response = await fetch(url, {
+    const response = await fetch("/api/stripe/create-portal-session", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ session_id: sessionId })
     })
-    const data = await response.json()
-    console.log(data)
+    const { url } = await response.json()
+    window.location = url;
   }
 
   return (

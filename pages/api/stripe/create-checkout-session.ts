@@ -1,11 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import Stripe from "stripe"
+import { stripe } from '@/libs/stripe'
 
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', { apiVersion: '2020-08-27' })
   const prices = await stripe.prices.list({
     lookup_keys: [req.body.lookup_key],
     expand: ['data.product'],
