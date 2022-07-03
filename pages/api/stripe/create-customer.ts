@@ -6,7 +6,6 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  await stripe.prices.list()
   const { email } = req.body;
   const { data } = await stripe.customers.list({ email });
   const customer = data.length >= 1 ? data[0] : await stripe.customers.create({ email })
