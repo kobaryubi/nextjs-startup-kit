@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { useStripe } from 'src/hook/useStripe';
 
 const ProductDisplay = () => {
   const {
     handleSubmit
   } = useForm()
+  const { stripe } = useStripe()
 
   const onSubmit = async () => {
     const url = "/api/stripe/create-checkout-session"
@@ -16,7 +18,15 @@ const ProductDisplay = () => {
       },
       body: JSON.stringify({ lookup_key: "test_subscription_product" })
     })
-    console.log(await response.json())
+    const data = await response.json()
+
+    if (!stripe) {
+      return;
+    }
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: data.id
+    })
+    console.warn(error.message)
   }
 
   return (
@@ -38,7 +48,8 @@ const SuccessDisplay = ({ sessionId }: {sessionId: string}) => {
       },
       body: JSON.stringify({ session_id: sessionId })
     })
-    console.log(await response.json())
+    const data = await response.json()
+    console.log(data)
   }
 
   return (

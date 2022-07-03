@@ -1,18 +1,38 @@
+import { useState } from 'react';
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { Provider } from 'react-redux'
 import { store } from '@/app/store'
+import Script from 'next/script'
+import { Stripe } from '@stripe/stripe-js';
+import { StripeContext } from 'src/context/StripeContext';
 
 const queryClient = new QueryClient()
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const [stripe, setStripe] = useState<Stripe>()
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <StripeContext.Provider value={{stripe}}>
+            <Component {...pageProps} />
+          </StripeContext.Provider>
+        </Provider>
+      </QueryClientProvider>
+      <Script
+        src="https://js.stripe.com/v3/"
+        onLoad={() => {
+          if (!window.Stripe) {
+            return;
+          }
+
+          setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''))
+        }}
+      />
+    </>
   )
 }
 
