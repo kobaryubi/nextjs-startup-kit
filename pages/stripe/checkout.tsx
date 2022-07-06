@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { useStripe } from 'src/hook/useStripe';
+import { useStripeSubscription } from 'src/hook/useStripeSubscription';
 
 const ProductDisplay = () => {
   const {
     handleSubmit
   } = useForm()
-  const { stripe } = useStripe()
+  const { stripe } = useStripeSubscription()
 
   const onSubmit = async () => {
     const url = "/api/stripe/create-checkout-session"

@@ -1,10 +1,19 @@
 import { Stripe } from '@stripe/stripe-js';
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
 
-type Context = {
-  stripe: Stripe | undefined
+type SubscriptionData = {
+  subscriptionId: string | undefined,
+  clientSecret: string | undefined
+} | undefined
+
+export type StripeContextType = {
+  stripe: Stripe | undefined,
+  subscriptionData: SubscriptionData,
+  setSubscriptionData: Dispatch<SetStateAction<SubscriptionData>>
 }
 
-export const StripeContext = createContext<Context>({
-  stripe: undefined
+export const StripeContext = createContext<StripeContextType>({
+  stripe: undefined,
+  subscriptionData: undefined,
+  setSubscriptionData: () => {}
 })
