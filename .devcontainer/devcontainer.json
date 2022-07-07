@@ -24,10 +24,11 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"eamodio.gitlens"
 	],
 
-	"forwardPorts": [4000],
+	"forwardPorts": [4000]
 
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],

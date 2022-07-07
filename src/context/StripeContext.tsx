@@ -7,13 +7,13 @@ type SubscriptionData = {
 } | undefined
 
 export type StripeContextType = {
-  stripe: Stripe | undefined,
+  stripe: Stripe | null,
   subscriptionData: SubscriptionData,
   setSubscriptionData: Dispatch<SetStateAction<SubscriptionData>>
 }
 
 export const StripeContext = createContext<StripeContextType>({
-  stripe: undefined,
+  stripe: null,
   subscriptionData: undefined,
   setSubscriptionData: () => {}
 })
