@@ -16,6 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/components/*": ["src/components/*"],
       "@/styles/*": ["styles/*"],
       "@/app/*": ["src/app/*"],
       "@/features/*": ["src/features/*"],
