@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Elements } from '@stripe/react-stripe-js'
+import { StripeElementsOptions } from "@stripe/stripe-js";
 import { useStripe } from 'src/hook/useStripe';
 import StripeCustomCheckoutForm from '@/components/stripe/StripeCustomCheckoutForm';
 
@@ -21,8 +22,13 @@ const StripeCustomCheckout = () => {
   }, [])
 
   const options = useMemo(() => {
+    const appearance: StripeElementsOptions["appearance"] = {
+      theme: 'stripe',
+    }
+
     return {
-      clientSecret
+      clientSecret,
+      appearance
     }
   }, [clientSecret])
 
