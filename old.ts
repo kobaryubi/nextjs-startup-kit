@@ -1,15 +1,3 @@
-// // import type { NextApiRequest, NextApiResponse } from 'next';
-// // import { stripe } from '@/libs/stripe'
-
-// // const handler = async (
-// //   req: NextApiRequest,
-// //   res: NextApiResponse
-// // ) => {
-// //   res.status(200).json({ status: "ok" })
-// // };
-
-// // export default handler;
-
 // // // const bodyParser = require('body-parser');
 // // // const cookieParser = require('cookie-parser');
 
@@ -251,9 +239,6 @@
 // // // app.listen(4242, () => console.log(`Node server listening on port http://localhost:${4242}!`));
 
 
-
-
-
 // // import type { NextApiRequest, NextApiResponse } from 'next';
 // // import { stripe } from '@/libs/stripe'
 
@@ -322,33 +307,6 @@
 // // // app.get('/', (req, res) => {
 // // //   const path = resolve(process.env.STATIC_DIR + '/register.html');
 // // //   res.sendFile(path);
-// // // });
-
-// // // app.post('/create-subscription', async (req, res) => {
-// // //   // Simulate authenticated user. In practice this will be the
-// // //   // Stripe Customer ID related to the authenticated user.
-// // //   const customerId = req.cookies['customer'];
-
-// // //   // Create the subscription
-// // //   const priceId = req.body.priceId;
-
-// // //   try {
-// // //     const subscription = await stripe.subscriptions.create({
-// // //       customer: customerId,
-// // //       items: [{
-// // //         price: priceId,
-// // //       }],
-// // //       payment_behavior: 'default_incomplete',
-// // //       expand: ['latest_invoice.payment_intent'],
-// // //     });
-
-// // //     res.send({
-// // //       subscriptionId: subscription.id,
-// // //       clientSecret: subscription.latest_invoice.payment_intent.client_secret,
-// // //     });
-// // //   } catch (error) {
-// // //     return res.status(400).send({ error: { message: error.message } });
-// // //   }
 // // // });
 
 // // // app.get('/invoice-preview', async (req, res) => {
@@ -507,49 +465,4 @@
 // // // app.listen(4242, () => console.log(`Node server listening on port http://localhost:${4242}!`));
 
 
-// import { useState, useEffect } from 'react'
-// import Stripe from 'stripe'
 
-// const Prices = () => {
-//   const [prices, setPrices] = useState<Stripe.Price[]>([])
-
-//   useEffect(() => {
-//     (async () => {
-//       const response = await fetch("/api/stripe/prices")
-//       const data = await response.json()
-//       setPrices(data)
-//     })()
-//   }, [])
-
-//   const handleClickButton = async (priceId: string) => {
-//     // const { subscriptionId, clientSecret } = await fetch("/api/stripe/create-subscription", {})
-//     const response = await fetch("/api/stripe/create-subscription", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ priceId })
-//     })
-//     // setSubscriptionData({ subscriptionId, clientSecret });
-//     // if(subscriptionData) {
-//     //   return <Redirect to={{
-//     //     pathname: '/subscribe',
-//     //     state: subscriptionData
-//     //   }} />
-//     // }
-//   }
-
-//   return (
-//     <ul>
-//       {prices.map(({ id, product, unit_amount }) => (
-//         <li key={id}>
-//           <p>{(product as Stripe.Product).name}</p>
-//           {unit_amount && <p>{unit_amount / 100} / month</p>}
-//           <button onClick={() => handleClickButton(id)}>select</button>
-//         </li>
-//       ))}
-//     </ul>
-//   )
-// }
-
-// export default Prices
